@@ -1,0 +1,6 @@
+# Access-porter mot PC-er
+access_ports:
+  - interface: GigabitEthernet1/0/2
+    vlan: 10
+  - interface: GigabitEthernet1/0/3
+    vlan: 20

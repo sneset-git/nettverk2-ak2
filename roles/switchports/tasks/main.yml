@@ -1,0 +1,10 @@
+# Setter hver port i listen som access-port i riktig VLAN
+- name: Konfigurer access-porter
+  cisco.ios.ios_config:
+    parents: "interface {{ item.interface }}"
+    lines:
+      - switchport mode access
+      - "switchport access vlan {{ item.vlan }}"
+      - spanning-tree portfast
+    save_when: modified
+  loop: "{{ access_ports | default([]) }}"
