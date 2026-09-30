@@ -3,6 +3,18 @@ trunk_interface: GigabitEthernet0/0/1
 
 # Subinterfaces for router-on-a-stick
 subinterfaces:
+  - vlan: 20
+    ip: 192.168.20.1
+    mask: 255.255.255.0
   - vlan: 99
     ip: 10.0.22.1
     mask: 255.255.255.0
+
+# DHCP-pooler – én per VLAN ruteren er gateway for
+dhcp_pools:
+  - name: VLAN20
+    network: 192.168.20.0
+    mask: 255.255.255.0
+    gateway: 192.168.20.1
+    exclude_start: 192.168.20.1
+    exclude_end: 192.168.20.10

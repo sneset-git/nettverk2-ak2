@@ -1,0 +1,16 @@
+# Holder de første adressene utenfor DHCP (gateway o.l.)
+- name: Ekskluder adresser fra DHCP
+  cisco.ios.ios_config:
+    lines:
+      - "ip dhcp excluded-address {{ item.exclude_start }} {{ item.exclude_end }}"
+  loop: "{{ dhcp_pools | default([]) }}"
+
+# Lager én DHCP-pool per VLAN i listen i host_vars
+- name: Opprett DHCP-pooler
+  cisco.ios.ios_config:
+    parents: "ip dhcp pool {{ item.name }}"
+    lines:
+      - "network {{ item.network }} {{ item.mask }}"
+      - "default-router {{ item.gateway }}"
+    save_when: modified
+  loop: "{{ dhcp_pools | default([]) }}"
