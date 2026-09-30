@@ -4,3 +4,9 @@
   gather_facts: false
   roles:
     - router_subif
+
+- name: Konfigurer switcher
+  hosts: switches
+  gather_facts: false
+  roles:
+    - vlans

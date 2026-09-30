@@ -1,0 +1,8 @@
+# VLAN-er som skal finnes på alle switcher
+vlans:
+  - id: 10
+    name: STUD1
+  - id: 20
+    name: STUD2
+  - id: 99
+    name: MGMT
