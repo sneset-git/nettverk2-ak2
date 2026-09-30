@@ -1,0 +1,6 @@
+# Hovedplaybook – kjører rollene på riktig gruppe fra inventory
+- name: Konfigurer rutere
+  hosts: routers
+  gather_facts: false
+  roles:
+    - router_subif

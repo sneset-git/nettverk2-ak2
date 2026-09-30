@@ -1,0 +1,8 @@
+# Port på R1 som går ned til S2-SW1 (trunk)
+trunk_interface: GigabitEthernet0/0/1
+
+# Subinterfaces for router-on-a-stick
+subinterfaces:
+  - vlan: 99
+    ip: 10.0.22.1
+    mask: 255.255.255.0
