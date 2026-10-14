@@ -1,0 +1,19 @@
+# Legger de fysiske portene i samme EtherChannel-gruppe
+- name: Konfigurer medlemsporter
+  cisco.ios.ios_config:
+    parents: "interface {{ item }}"
+    lines:
+      - switchport mode trunk
+      - "channel-group {{ etherchannel.group }} mode {{ etherchannel.mode }}"
+      - no shutdown
+  loop: "{{ etherchannel.interfaces }}"
+  when: etherchannel is defined
+
+# Port-channel-interfacet opprettes automatisk – settes som trunk
+- name: Konfigurer Port-channel som trunk
+  cisco.ios.ios_config:
+    parents: "interface Port-channel{{ etherchannel.group }}"
+    lines:
+      - switchport mode trunk
+    save_when: modified
+  when: etherchannel is defined

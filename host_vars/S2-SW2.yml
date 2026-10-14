@@ -4,3 +4,11 @@ access_ports:
     vlan: 10
   - interface: GigabitEthernet1/0/3
     vlan: 20
+
+# EtherChannel mot STUD1 (LACP)
+etherchannel:
+  group: 1
+  mode: active
+  interfaces:
+    - GigabitEthernet1/0/4
+    - GigabitEthernet1/0/5
