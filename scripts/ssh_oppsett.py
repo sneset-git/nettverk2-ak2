@@ -11,7 +11,6 @@ port = input("Port (f.eks. COM3): ")
 hostname = input("Hostname: ")
 brukernavn = input("Brukernavn: ")
 passord = input("Passord: ")
-secret = input("Enable secret: ")
 domene = input("Domenenavn (f.eks. lab.local): ")
 
 # Felles kommandoer for både ruter og switch
@@ -21,8 +20,7 @@ kommandoer = [
     "configure terminal",
     "hostname " + hostname,
     "ip domain-name " + domene,
-    "username " + brukernavn + " secret " + passord,
-    "enable secret " + secret,
+    "username " + brukernavn + " privilege 15 secret " + passord,
     "crypto key generate rsa modulus 2048",
     "ip ssh version 2",
     "line vty 0 4",
