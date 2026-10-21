@@ -4,7 +4,6 @@
   gather_facts: false
   roles:
     - router_subif
-    - dhcp
 
 - name: Konfigurer switcher
   hosts: switches

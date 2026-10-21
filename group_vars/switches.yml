@@ -6,3 +6,5 @@ vlans:
     name: STUD2
   - id: 99
     name: MGMT
+  - id: 999
+    name: NATIVE

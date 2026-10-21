@@ -1,20 +1,20 @@
 # Port på R1 som går ned til S2-SW1 (trunk)
 trunk_interface: GigabitEthernet0/0/1
 
-# Subinterfaces for router-on-a-stick
+# Subinterfaces med HSRP – vip er den delte gateway-adressen
 subinterfaces:
+  - vlan: 10
+    ip: 192.168.10.4
+    mask: 255.255.255.0
+    vip: 192.168.10.1
+    priority: 100
   - vlan: 20
-    ip: 192.168.20.1
+    ip: 192.168.20.4
     mask: 255.255.255.0
+    vip: 192.168.20.1
+    priority: 100
   - vlan: 99
-    ip: 10.0.22.1
+    ip: 10.0.22.2
     mask: 255.255.255.0
-
-# DHCP-pooler – én per VLAN ruteren er gateway for
-dhcp_pools:
-  - name: VLAN20
-    network: 192.168.20.0
-    mask: 255.255.255.0
-    gateway: 192.168.20.1
-    exclude_start: 192.168.20.1
-    exclude_end: 192.168.20.10
+    vip: 10.0.22.1
+    priority: 110

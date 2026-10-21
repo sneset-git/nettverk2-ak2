@@ -1,0 +1,20 @@
+# Port på R2 som går ned til S2-SW1 (trunk)
+trunk_interface: GigabitEthernet0/1
+
+# Subinterfaces med HSRP – lavere prioritet enn R1
+subinterfaces:
+  - vlan: 10
+    ip: 192.168.10.5
+    mask: 255.255.255.0
+    vip: 192.168.10.1
+    priority: 95
+  - vlan: 20
+    ip: 192.168.20.5
+    mask: 255.255.255.0
+    vip: 192.168.20.1
+    priority: 95
+  - vlan: 99
+    ip: 10.0.22.3
+    mask: 255.255.255.0
+    vip: 10.0.22.1
+    priority: 105
