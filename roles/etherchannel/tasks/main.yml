@@ -4,16 +4,18 @@
     parents: "interface {{ item }}"
     lines:
       - switchport mode trunk
+      - "switchport trunk native vlan {{ native_vlan }}"
       - "channel-group {{ etherchannel.group }} mode {{ etherchannel.mode }}"
       - no shutdown
   loop: "{{ etherchannel.interfaces }}"
   when: etherchannel is defined
 
-# Port-channel-interfacet opprettes automatisk – settes som trunk
+# Port-channel-interfacet – trunk med felles native VLAN
 - name: Konfigurer Port-channel som trunk
   cisco.ios.ios_config:
     parents: "interface Port-channel{{ etherchannel.group }}"
     lines:
       - switchport mode trunk
+      - "switchport trunk native vlan {{ native_vlan }}"
     save_when: modified
   when: etherchannel is defined

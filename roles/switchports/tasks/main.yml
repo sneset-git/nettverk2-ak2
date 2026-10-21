@@ -8,3 +8,14 @@
       - spanning-tree portfast
     save_when: modified
   loop: "{{ access_ports | default([]) }}"
+
+# Setter hver trunk-port med felles native VLAN
+- name: Konfigurer trunk-porter
+  cisco.ios.ios_config:
+    parents: "interface {{ item }}"
+    lines:
+      - switchport mode trunk
+      - "switchport trunk native vlan {{ native_vlan }}"
+      - no shutdown
+    save_when: modified
+  loop: "{{ trunk_ports | default([]) }}"

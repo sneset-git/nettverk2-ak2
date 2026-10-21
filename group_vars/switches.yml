@@ -8,3 +8,6 @@ vlans:
     name: MGMT
   - id: 999
     name: NATIVE
+
+# Native VLAN på alle trunker (må være likt i begge ender)
+native_vlan: 999

@@ -5,6 +5,10 @@ access_ports:
   - interface: GigabitEthernet1/0/3
     vlan: 20
 
+# Trunk-port mot S2-SW1
+trunk_ports:
+  - GigabitEthernet1/0/1
+
 # EtherChannel mot STUD1 (LACP)
 etherchannel:
   group: 1

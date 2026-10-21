@@ -1,0 +1,5 @@
+# Trunk-porter mot R1, R2 og S2-SW2
+trunk_ports:
+  - GigabitEthernet0/1
+  - GigabitEthernet0/2
+  - FastEthernet0/1
